@@ -1,0 +1,44 @@
+<h2> Master IT 390 Weekly Schedule </h2>
+
+<ul class="IT390">
+  <li *ngFor="let IT of IT390" (click)="onSelect(IT)" [class.selected]="IT === selectedIT">
+    <span class="IT-element">
+      <span class="badge">{{IT.id}}</span> {{IT.name}}
+    </span>
+    <button class="delete-button" (click)="deleteIT(IT, $event)">Delete</button>
+  </li>
+</ul>
+
+<div class="error" *ngIf="error">{{error}}</div>
+<button (click)="addIT()">Add New IT</button>
+<div *ngIf="addingIT">
+  <my-IT-detail (close)="close($event)"></my-IT-detail>
+</div>
+
+<div *ngIf="selectedIT">
+  <h2>
+    {{selectedIT.name | uppercase}} is my IT
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
+
+<div>
+  <style>
+    .hidden { visibility: hidden}
+  </style>
+  <h4>ngFor Features</h4>
+  <button (click)="showNgFor=!showNgFor">{{showNgFor ? 'Hide' : 'Show'}} ngFor Features</button>
+  <table [class.hidden]="!showNgFor">
+    <tbody>
+      <tr *ngFor="let IT of IT390; let ix = index; let c = count; let e = even; let o = odd; let f = first; let l = last">
+        <td>{{IT.name}}</td>
+        <td>{{ix}}</td>
+        <td>{{c}}</td>
+        <td>{{e}}</td>
+        <td>{{o}}</td>
+        <td>{{f}}</td>
+        <td>{{l}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

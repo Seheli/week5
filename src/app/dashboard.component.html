@@ -1,0 +1,9 @@
+<h3> IT390 Weeks </h3>
+<div class="grid grid-pad">
+  <div *ngFor="let IT of IT390" (click)="gotoDetail(IT)" class="col-1-4">
+    <div class="module IT">
+      <h4>{{IT.name}}</h4>
+    </div>
+  </div>
+</div>
+<my-IT-search></my-IT-search>
